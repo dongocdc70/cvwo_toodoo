@@ -1,0 +1,26 @@
+<%= simple_form_for @task do |f| %>
+  <%= f.input :title %>
+  <%= f.input :deadline %>
+  <% if params[:action] == 'edit' %>
+    <%= f.input :completed %>
+  <% end %>
+  <%= f.input :tags, as: :array %>
+  <button class="add-tag-button btn btn-default">Add more tags</button>
+  <%= f.button :submit %>
+
+<% end %>
+
+<script>
+  $(document).ready(function() {
+    $('input[name="task[tags][]"]:last-of-type').focus();
+    $('.add-tag-button').on('click', function(event) {
+      var $lastTagField;
+      event.preventDefault();
+      $lastTagField = $('input[name="task[tags][]"]:last-of-type').clone();
+      $lastTagField.val("");
+      $(".task_tags").append($lastTagField);
+      $lastTagField.focus();
+    });
+  });
+
+</script>

@@ -1,0 +1,54 @@
+<%= form_for @task do |f| %>
+  <% if task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :completed %>
+    <%= f.check_box :completed %>
+  </div>
+
+  <div class="field">
+    <%= f.label :deadline %>
+    <%= f.datetime_select :deadline %>
+  </div>
+
+  <div class="field">
+
+    <button class="add-email-button">Add additional email</button>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<script>
+      $(document).ready(function() {
+        $('.add-email-button').on('click',
+            // var $lastEmailField;
+            // ev.preventDefault();
+            // $lastEmailField = $('input[name="course[emails][]"]:last-of-type').clone();
+            // $lastEmailField.val("");
+            // return $(".input.course_emails").append($lastEmailField);
+          function(ev) {
+            ev.preventDefault();
+            alert('clicked');
+          }
+      );
+
+    }
+</script>

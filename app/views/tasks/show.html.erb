@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @task.title %>
+</p>
+
+<p>
+  <strong>Completed:</strong>
+  <%= @task.completed %>
+</p>
+
+<p>
+  <strong>Deadline:</strong>
+  <%= @task.deadline.strftime('%B %d, %Y %H:%M') %>
+</p>
+
+<p>
+  <strong>Tags:</strong>
+  <%= @task.tags.join(", ") %>
+</p>
+
+<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Back', tasks_path %>
