@@ -1,6 +1,6 @@
 <%= simple_form_for @task do |f| %>
   <%= f.input :title %>
-  <%= f.input :deadline %>
+  <%= f.input :deadline, as: :datetime_picker %>
   <% if params[:action] == 'edit' %>
     <%= f.input :completed %>
   <% end %>
@@ -12,6 +12,10 @@
 
 <script>
   $(document).ready(function() {
+    $('input.datetime_picker').datetimepicker({
+      sideBySide: true
+    });
+
     $('input[name="task[tags][]"]:last-of-type').focus();
     $('.add-tag-button').on('click', function(event) {
       var $lastTagField;

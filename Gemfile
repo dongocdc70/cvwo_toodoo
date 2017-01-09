@@ -39,9 +39,8 @@ gem 'jbuilder', '~> 2.5'
 # ------------------------------------
 gem 'bootstrap-sass'
 gem 'simple_form'
-
-
-
+gem 'momentjs-rails', '~> 2.9',  :github => 'derekprior/momentjs-rails'
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails'
 
 
 
