@@ -20,7 +20,7 @@
         <td><%= link_to completed_link_text(task),
             toggle_completed_task_path(task),
             :remote => true, id: "completed_link_#{task.id}" %>  </td>
-        <td><%= task.deadline.strftime('%B %d, %Y %H:%M') %></td>
+        <td><%= task.deadline ? task.deadline.strftime('%B %d, %Y %H:%M') : "No deadline" %></td>
         <td><%= task.tags.join(", ") %></td>
         <td><%= link_to 'Show', task %></td>
         <td><%= link_to 'Edit', edit_task_path(task) %></td>

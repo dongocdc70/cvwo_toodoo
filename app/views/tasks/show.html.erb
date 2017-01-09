@@ -12,7 +12,7 @@
 
 <p>
   <strong>Deadline:</strong>
-  <%= @task.deadline.strftime('%B %d, %Y %H:%M') %>
+  <%= @task.deadline ? @task.deadline.strftime('%B %d, %Y %H:%M') : "No deadline" %>
 </p>
 
 <p>
