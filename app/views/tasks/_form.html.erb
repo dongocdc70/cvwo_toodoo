@@ -13,10 +13,11 @@
 <script>
   $(document).ready(function() {
     $('input.datetime_picker').datetimepicker({
+      format: 'DD/MM/YYYY HH:mm',
       collapse: false,
       toolbarPlacement: 'top',
       showTodayButton: true,
-      showClear: true,
+      showClear: true
     });
 
     $('input[name="task[tags][]"]:last-of-type').focus();

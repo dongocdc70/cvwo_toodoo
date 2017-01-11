@@ -12,7 +12,8 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.order(:deadline).all
+    @tasks_today = Task.where(deadline: Date.today.beginning_of_day..Date.today.end_of_day).order(:deadline)
+    @tasks_other = Task.where.not(deadline: Date.today.beginning_of_day..Date.today.end_of_day).or(Task.where(deadline: nil)).order(:deadline)
   end
 
   # GET /tasks/1

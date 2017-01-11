@@ -18,10 +18,10 @@ ActiveRecord::Schema.define(version: 20170108084606) do
   create_table "tasks", force: :cascade do |t|
     t.string   "title",      default: "Untitled"
     t.boolean  "completed",  default: false
-    t.datetime "deadline",   default: '2017-01-09 09:03:29'
-    t.string   "tags",       default: [],                                 array: true
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
+    t.datetime "deadline"
+    t.string   "tags",                                         array: true
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
 end

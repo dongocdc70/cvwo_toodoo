@@ -1,35 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Tasks</h1>
+<h1>Today's Tasks</h1>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Completed/On-going</th>
-      <th>Deadline</th>
-      <th>Tags</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @tasks.each do |task| %>
-      <tr id="task_<%= task.id %>">
-        <td><%= task.title %></td>
-        <td><%= link_to completed_link_text(task),
-            toggle_completed_task_path(task),
-            :remote => true, id: "completed_link_#{task.id}" %>  </td>
-        <td><%= task.deadline ? task.deadline.strftime('%B %d, %Y %H:%M') : "No deadline" %></td>
-        <td><%= task.tags.join(", ") %></td>
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render 'table', tasks: @tasks_today %>
 
 <br>
+
+<h1>Other Tasks</h1>
+
+<%= render 'table', tasks: @tasks_other %>
+
 
 <%= link_to 'New Task', new_task_path %>
