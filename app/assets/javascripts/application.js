@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require datatables
 //= require moment
 //= require bootstrap-datetimepicker.min
 //= require pickers

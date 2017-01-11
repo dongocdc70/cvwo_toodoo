@@ -14,6 +14,8 @@ class TasksController < ApplicationController
   def index
     @tasks_today = Task.where(deadline: Date.today.beginning_of_day..Date.today.end_of_day).order(:deadline)
     @tasks_other = Task.where.not(deadline: Date.today.beginning_of_day..Date.today.end_of_day).or(Task.where(deadline: nil)).order(:deadline)
+
+    @i = 0
   end
 
   # GET /tasks/1
