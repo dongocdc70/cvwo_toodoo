@@ -1,20 +1,53 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Today's Tasks</h1>
+ <div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading"  data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+      <h1 class="panel-title">
+        Today's tasks
+      </h1>
+    </div>
+    <div id="collapse1" class="panel-collapse collapse in">
+      <div class="panel-body">
+      	<%= render 'table', tasks: @tasks_today %>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+      <h1 class="panel-title">
+        Other tasks
+      </h1>
+    </div>
+    <div id="collapse2" class="panel-collapse collapse">
+      <div class="panel-body">
+      	<%= render 'table', tasks: @tasks_other %>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+      <h1 class="panel-title">
+        New task
+      </h1>
+    </div>
+    <div id="collapse3" class="panel-collapse collapse">
+      <div class="panel-body">
+      	<%= render 'form', action: 'new', task: @task %>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= render 'table', tasks: @tasks_today %>
-
-<br>
-
-<h1>Other Tasks</h1>
-
-<%= render 'table', tasks: @tasks_other %>
-
-
-<%= link_to 'New Task', new_task_path %>
 
 <script>
   $(document).ready(function() {
     $('table').DataTable();
   });
 </script>
+
+<style>
+	.panel-heading {
+		cursor: pointer;
+	}
+</style>
