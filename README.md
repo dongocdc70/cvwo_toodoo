@@ -1,24 +1,20 @@
-# README
+## README                                                 ##
+## git@bitbucket.org:dongocduc311997/cvwo_toodoo.git      ##
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+******************************
+*  Name: Do Ngoc Duc         *
+*  Matric number: A0160589U  *
+******************************
 
-* Ruby version
+1. User actions:
+		* Implemented:
+			- I can perform CRUD (Create - Read - Update - Delete) operations on tasks
+			- I can set deadline (date and time) for each task
+			- I can toggle whether the task has been completed
+			- I can add tags to the task
+			- I can search and sort task by various criteria (deadline, title, tags, completed/on-going)
+		* To be implemented:
+		  - I can add multimedia notes to the task
+		  - I can add sub-tasks to the task
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
