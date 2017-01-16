@@ -12,18 +12,11 @@
       toolbarPlacement: 'top',
       showTodayButton: true,
       showClear: true,
-      sideBySide: true
+      sideBySide: true,
     });
 
     $('input[name="task[tags][]"]:last-of-type').focus();
-    $('.add-tag-button').on('click', function(event) {
-      var $lastTagField;
-      event.preventDefault();
-      $lastTagField = $('input[name="task[tags][]"]:last-of-type').clone();
-      $lastTagField.val("");
-      $(".task_tags").append($lastTagField);
-      $lastTagField.focus();
-    });
+
 
     if($('p#notice').text()) {
       $.bootstrapGrowl($('p#notice').text(), // Messages
@@ -59,5 +52,13 @@
       });
     }
 
+    $('.add-tag-button').on('click', function(event) {
+      var $lastTagField;
+      event.preventDefault();
+      $lastTagField = $('input[name="task[tags][]"]:last-of-type').clone();
+      $lastTagField.val("");
+      $(".task_tags").append($lastTagField);
+      $lastTagField.focus();
+    });
 
   });

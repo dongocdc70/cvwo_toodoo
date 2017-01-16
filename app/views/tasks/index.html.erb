@@ -6,6 +6,11 @@
 
 
 <div class="container vertical-center" id="main">
+	<h1 class="display-4" id="title-display" style="color: #f9f9f9">Today is <%= Date::DAYNAMES[Date.today.wday] %>.
+
+		<%= @tasks_today_ongoing.zero? ? "You've finished all the tasks!": "You've got " + pluralize(@tasks_today_ongoing, 'task') + " left today!"  %>
+
+	</h1>
 	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
 		<!-- panel 1 - TODAY TASKS -->
@@ -14,6 +19,9 @@
 			  <h4 class="panel-title">
 			    <a class="accordion-toggle" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-today-tasks" aria-expanded="true" aria-controls="collapse-today-tasks">
 			      Today tasks
+						<div style="display:inline-block; width:30px" class="badge badge-info" id="badge-noti-today">
+			           <%= @tasks_today_ongoing %>
+			      </div>
 			    </a>
 			  </h4>
 			</div>
@@ -30,6 +38,9 @@
 			  <h4 class="panel-title">
 			    <a class="accordion-toggle" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-other-tasks" aria-expanded="false" aria-controls="collapse-other-tasks">
 			      Other tasks
+			      <div style="display:inline-block; width:30px" class="badge badge-info" id="badge-noti-other">
+			           <%= @tasks_other_ongoing %>
+			      </div>
 			    </a>
 			  </h4>
 			</div>

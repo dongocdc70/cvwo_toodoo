@@ -5,7 +5,20 @@
     <%= f.input :completed %>
   <% end %>
   <%= f.input :tags, as: :array %>
-  <button class="add-tag-button btn btn-default">Add more tags</button>
+  <button class="add-tag-button btn btn-default" style="margin-bottom: 25px;">Add more tags</button>
+  <br>
   <%= f.button :submit %>
 
 <% end %>
+
+<style>
+  li.picker-switch > table > tbody > tr > td > a[data-action="today"] > span:after {
+    content: '  Go to today';
+    font-family: 'Roboto';
+  }
+
+  li.picker-switch > table > tbody > tr > td > a[data-action="clear"] > span:after {
+    content: '  Disable deadline';
+    font-family: 'Roboto';
+  }
+</style>

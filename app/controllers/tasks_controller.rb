@@ -13,7 +13,9 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     @tasks_today = Task.where(deadline: Date.today.beginning_of_day..Date.today.end_of_day).order(:deadline)
+    @tasks_today_ongoing = @tasks_today.where(completed: false).count
     @tasks_other = Task.where.not(deadline: Date.today.beginning_of_day..Date.today.end_of_day).or(Task.where(deadline: nil)).order(:deadline)
+    @tasks_other_ongoing = @tasks_other.where(completed: false).count
 
     @i = 0
     @task = Task.new
