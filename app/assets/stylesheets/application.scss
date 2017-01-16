@@ -16,5 +16,20 @@
  *= require_self
  */
 
-@import "bootstrap-sprockets"
-@import "bootstrap"
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+
+html, body {
+	height: 100%;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	background: url(https://static.pexels.com/photos/4097/city-cars-traffic-lights.jpeg) no-repeat center center fixed;
+	-webkit-background-size: cover; /* For WebKit*/
+	-moz-background-size: cover;    /* Mozilla*/
+	-o-background-size: cover;      /* Opera*/
+	background-size: cover;         /* Generic*/
+}

@@ -1,53 +1,62 @@
 <p id="notice"><%= notice %></p>
 
- <div class="panel-group" id="accordion">
-  <div class="panel panel-default">
-    <div class="panel-heading"  data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-      <h1 class="panel-title">
-        Today's tasks
-      </h1>
-    </div>
-    <div id="collapse1" class="panel-collapse collapse in">
-      <div class="panel-body">
-      	<%= render 'table', tasks: @tasks_today %>
-      </div>
-    </div>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-      <h1 class="panel-title">
-        Other tasks
-      </h1>
-    </div>
-    <div id="collapse2" class="panel-collapse collapse">
-      <div class="panel-body">
-      	<%= render 'table', tasks: @tasks_other %>
-      </div>
-    </div>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-      <h1 class="panel-title">
-        New task
-      </h1>
-    </div>
-    <div id="collapse3" class="panel-collapse collapse">
-      <div class="panel-body">
-      	<%= render 'form', action: 'new', task: @task %>
-      </div>
-    </div>
-  </div>
-</div>
 
 
-<script>
-  $(document).ready(function() {
-    $('table').DataTable();
-  });
-</script>
+<div class="container vertical-center" id="main">
+	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
-<style>
-	.panel-heading {
-		cursor: pointer;
-	}
-</style>
+		<!-- panel 1 - TODAY TASKS -->
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="heading-today-tasks">
+			  <h4 class="panel-title">
+			    <a class="accordion-toggle" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-today-tasks" aria-expanded="true" aria-controls="collapse-today-tasks">
+			      Today tasks
+			    </a>
+			  </h4>
+			</div>
+		  <div id="collapse-today-tasks" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading-today-tasks">
+		    <div class="panel-body">
+		      <%= render 'table', tasks: @tasks_today %>
+		    </div>
+		  </div>
+		</div>
+
+		<!-- panel 2 - OTHER TASKS -->
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="heading-other-tasks">
+			  <h4 class="panel-title">
+			    <a class="accordion-toggle" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-other-tasks" aria-expanded="false" aria-controls="collapse-other-tasks">
+			      Other tasks
+			    </a>
+			  </h4>
+			</div>
+		  <div id="collapse-other-tasks" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-other-tasks">
+		    <div class="panel-body">
+		      <%= render 'table', tasks: @tasks_other %>
+		    </div>
+		  </div>
+		</div>
+
+		<!-- panel 3 - NEW TASK -->
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="heading-new-task">
+			  <h4 class="panel-title">
+			    <a class="accordion-toggle" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-new-task" aria-expanded="false" aria-controls="collapse-new-task">
+			      New task
+			    </a>
+			  </h4>
+			</div>
+		  <div id="collapse-new-task" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-new-task">
+		    <div class="panel-body">
+		      <%= render 'form', action: 'new', task: @task %>
+		    </div>
+		  </div>
+		</div>
+
+	</div><!-- panel-group -->
+
+
+
+
+</div><!-- container -->
+
