@@ -18,4 +18,5 @@
 //= require moment
 //= require bootstrap-datetimepicker.min
 //= require pickers
+//= require jquery.bootstrap-growl.min
 //= require_tree .

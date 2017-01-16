@@ -11,7 +11,8 @@
       collapse: false,
       toolbarPlacement: 'top',
       showTodayButton: true,
-      showClear: true
+      showClear: true,
+      sideBySide: true
     });
 
     $('input[name="task[tags][]"]:last-of-type').focus();
@@ -23,6 +24,40 @@
       $(".task_tags").append($lastTagField);
       $lastTagField.focus();
     });
+
+    if($('p#notice').text()) {
+      $.bootstrapGrowl($('p#notice').text(), // Messages
+      { // options
+        type: "success", // info, success, warning and danger
+        ele: "body", // parent container
+        offset: {
+        from: "bottom",
+        amount: 20
+        },
+        align: "center", // right, left or center
+        width: 400,
+        delay: 4000,
+        allow_dismiss: true, // add a close button to the message
+        stackup_spacing: 10
+      });
+    }
+
+    if($('p#alert').text()) {
+      $.bootstrapGrowl($('p#alert').text(), // Messages
+      { // options
+        type: "danger", // info, success, warning and danger
+        ele: "body", // parent container
+        offset: {
+        from: "bottom",
+        amount: 20
+        },
+        align: "center", // right, left or center
+        width: 400,
+        delay: 2000,
+        allow_dismiss: true, // add a close button to the message
+        stackup_spacing: 10
+      });
+    }
 
 
   });
