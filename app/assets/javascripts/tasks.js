@@ -61,4 +61,25 @@
       $lastTagField.focus();
     });
 
+    $('#tags').val('').prop('selected', true);
+
+    $('#tags').change(function(event) {
+      $.ajax({
+      url: 'tasks/filter_by_tag',
+        dataType: 'html',
+        data: {tag: $('#tags option:selected').val()},
+      })
+      .done(function(response) {
+        if($('#filter-by-tag-table table').length) {
+          $('#filter-by-tag-table table').DataTable().destroy(true);
+        }
+        $('#filter-by-tag-table').html(response);
+        $('#filter-by-tag-table table').DataTable();
+      })
+      .fail(function() {
+        console.log("error");
+      });
+    });
+
+
   });

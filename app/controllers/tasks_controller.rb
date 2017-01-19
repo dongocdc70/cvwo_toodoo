@@ -1,4 +1,7 @@
 class TasksController < ApplicationController
+
+  before_action :set_task, only: [:show, :edit, :update, :destroy]
+
   def toggle_completed
     @task = Task.find(params[:id])
     @task.toggle!(:completed)
@@ -7,7 +10,15 @@ class TasksController < ApplicationController
     end
   end
 
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  def filter_by_tag
+    @tag = params[:tag]
+    @tasks_tag = Task.where('? = ANY(tags)', @tag)
+    respond_to do |format|
+      format.js do
+        render partial: 'table', locals: {tasks: @tasks_tag}
+      end
+    end
+  end
 
   # GET /tasks
   # GET /tasks.json
@@ -17,8 +28,12 @@ class TasksController < ApplicationController
     @tasks_other = Task.where.not(deadline: Date.today.beginning_of_day..Date.today.end_of_day).or(Task.where(deadline: nil)).order(:deadline)
     @tasks_other_ongoing = @tasks_other.where(completed: false).count
 
+    @all_tags = Task.pluck(:tags).flatten.uniq
+
     @i = 0
     @task = Task.new
+
+
   end
 
   # GET /tasks/1

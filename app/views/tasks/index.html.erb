@@ -51,7 +51,25 @@
 		  </div>
 		</div>
 
-		<!-- panel 3 - NEW TASK -->
+		<!-- panel 3 - FIND BY TAGS -->
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="heading-find-by-tags">
+			  <h4 class="panel-title">
+			    <a class="accordion-toggle" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-find-by-tags" aria-expanded="false" aria-controls="collapse-find-by-tags">
+			      Find by tags
+			    </a>
+			  </h4>
+			</div>
+		  <div id="collapse-find-by-tags" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-find-by-tags">
+		    <div class="panel-body">
+		      <%= select_tag "tags", options_for_select(@all_tags, ''),
+		      											{prompt: 'Select a tag'} %>
+					<div id="filter-by-tag-table"></div>
+		    </div>
+		  </div>
+		</div>
+
+		<!-- panel 4 - NEW TASK -->
 		<div class="panel panel-default">
 			<div class="panel-heading" role="tab" id="heading-new-task">
 			  <h4 class="panel-title">
@@ -73,4 +91,3 @@
 
 
 </div><!-- container -->
-
