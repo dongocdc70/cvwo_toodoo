@@ -93,7 +93,7 @@ body {
     .panel-heading .accordion-toggle{
 
         &[aria-expanded="true"] {
-            background: #ff4444;
+            background: #f57c00;
             color: #f9f9f9;
             font-weight: bold;
             &:after {
@@ -106,7 +106,7 @@ body {
 
 
         &[aria-expanded="false"] {
-            background: #33b5e5;
+            background: #FFCC80;
             color: #f9f9f9;
             font-weight: bold;
             &:after {

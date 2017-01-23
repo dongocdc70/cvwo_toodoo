@@ -3,12 +3,27 @@
 	<p id="alert"><%= alert %></p>
 </div>
 
+<div class="modal fade" id="modal-new-task">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Create New Task</h4>
+			</div>
+			<div class="modal-body">
+				<%= render 'form', action: 'new', task: @task %>
+			</div>
 
+		</div>
+	</div>
+</div>
 
 <div class="container vertical-center" id="main">
-	<h1 class="display-4" id="title-display" style="color: #f9f9f9">Today is <%= Date::DAYNAMES[Date.today.wday] %>.
+	<h1 class="display-4" id="title-display" style="color: #f9f9f9; margin-bottom: 20px">Today is <%= Date::DAYNAMES[Date.today.wday] %>.
 
 		<%= @tasks_today_ongoing.zero? ? "You've finished all the tasks!": "You've got " + pluralize(@tasks_today_ongoing, 'task') + " left today!"  %>
+
+		<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#modal-new-task" style="float: right"><i class="glyphicon glyphicon-plus" style="padding-right: 5px;"></i>New Task</button>
 
 	</h1>
 	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -85,21 +100,7 @@
 		  </div>
 		</div>
 
-		<!-- panel 5 - NEW TASK -->
-		<div class="panel panel-default">
-			<div class="panel-heading" role="tab" id="heading-new-task">
-			  <h4 class="panel-title">
-			    <a class="accordion-toggle" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-new-task" aria-expanded="false" aria-controls="collapse-new-task">
-			      New task
-			    </a>
-			  </h4>
-			</div>
-		  <div id="collapse-new-task" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-new-task">
-		    <div class="panel-body">
-		      <%= render 'form', action: 'new', task: @task %>
-		    </div>
-		  </div>
-		</div>
+
 
 	</div><!-- panel-group -->
 
