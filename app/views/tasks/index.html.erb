@@ -69,7 +69,23 @@
 		  </div>
 		</div>
 
-		<!-- panel 4 - NEW TASK -->
+		<!-- panel 4 - UNTAGGED -->
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="heading-untagged">
+			  <h4 class="panel-title">
+			    <a class="accordion-toggle" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-untagged" aria-expanded="false" aria-controls="collapse-untagged">
+			      Untagged tasks
+			    </a>
+			  </h4>
+			</div>
+		  <div id="collapse-untagged" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-untagged">
+				<div class="panel-body">
+		      <%= render 'table', tasks: @tasks_untagged %>
+		    </div>
+		  </div>
+		</div>
+
+		<!-- panel 5 - NEW TASK -->
 		<div class="panel panel-default">
 			<div class="panel-heading" role="tab" id="heading-new-task">
 			  <h4 class="panel-title">

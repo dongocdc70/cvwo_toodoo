@@ -15,7 +15,7 @@
     "columnDefs": [
       {
       'orderable': false,
-      'targets': 4
+      'targets': [3, 4]
        },
        {
        "orderDataType": "dom-completed",

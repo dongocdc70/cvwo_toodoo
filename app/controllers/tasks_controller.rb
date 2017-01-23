@@ -32,6 +32,8 @@ class TasksController < ApplicationController
 
     @all_tags = Task.pluck(:tags).flatten.uniq
 
+    @tasks_untagged = Task.where("tags = '{}'")
+
     @i = 0
     @task = Task.new
 
