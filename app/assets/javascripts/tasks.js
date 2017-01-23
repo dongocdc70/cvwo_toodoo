@@ -2,9 +2,28 @@
 // # All this logic will automatically be available in application.js.
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
+  $.extend( true, $.fn.dataTable.defaults, {
+    "aaSorting": [],
+    "order": [],
+    "aoColumnDefs": [
+      {
+      'bSortable': false,
+      'aTargets': ['action']
+       },
+    ],
+    "language": {
+      "lengthMenu":     "Show _MENU_ tasks",
+      "info":           "Showing _START_ to _END_ of _TOTAL_ tasks",
+      "infoEmpty":      "",
+      "emptyTable":     "No task yet! Enjoy your free time!",
+
+    }
+  } );
 
   $(document).ready(function() {
-    $('table').DataTable();
+    $('table').DataTable({
+
+    });
 
     $('input.datetime_picker').datetimepicker({
       format: 'DD/MM/YYYY HH:mm',
@@ -13,6 +32,7 @@
       showTodayButton: true,
       showClear: true,
       sideBySide: true,
+      minDate: moment(),
     });
 
     $('input[name="task[tags][]"]:last-of-type').focus();
@@ -52,14 +72,16 @@
       });
     }
 
-    $('.add-tag-button').on('click', function(event) {
-      var $lastTagField;
-      event.preventDefault();
-      $lastTagField = $('input[name="task[tags][]"]:last-of-type').clone();
-      $lastTagField.val("");
-      $(".task_tags").append($lastTagField);
-      $lastTagField.focus();
-    });
+    // $('.add-tag-button').on('click', function(event) {
+    //   var $lastTagField = $('input[name="task[tags][]"]:last-of-type');
+    //   event.preventDefault();
+    //   if($lastTagField.val()) {
+    //     $lastTagField = $('input[name="task[tags][]"]:last-of-type').clone();
+    //     $lastTagField.val("");
+    //     $(".task_tags").append($lastTagField);
+    //   }
+    //   $lastTagField.focus();
+    // });
 
     $('#tags').val('').prop('selected', true);
 
@@ -81,5 +103,20 @@
       });
     });
 
+    $('.task_tags').on('input', 'input', function() {
+      $(this).siblings('input').each(function(index, el) {
+        if(!$(this).val()) {
+          $(this).remove();
+        }
+      });
+      var $lastTagField = $('input[name="task[tags][]"]:last-of-type');
+      if($(this).val()) {
+        if($(this) === $lastTagField || $lastTagField.val()) {
+          $lastTagField = $lastTagField.clone();
+          $lastTagField.val("");
+          $(".task_tags").append($lastTagField);
+        }
+      }
+    });
 
   });

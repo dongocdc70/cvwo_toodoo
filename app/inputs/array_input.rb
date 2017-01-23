@@ -10,6 +10,6 @@ class ArrayInput < SimpleForm::Inputs::StringInput
 	end
 
 	def input_type
-		:text
+		:string
 	end
 end

@@ -12,13 +12,13 @@
   <tbody>
     <% tasks.each do |task| %>
       <tr id="task_<%= task.id %>">
-        <td><%= task.title %></td>
+        <td><%= link_to task.title, task %> </td>
         <td><%= link_to completed_link_text(task),
             toggle_completed_task_path(task),
-            :remote => true, id: "completed_link_#{task.id}" %>  </td>
-        <td><%= task.deadline ? task.deadline.strftime('%B %d, %Y %H:%M') : "No deadline" %></td>
-        <td><%= task.tags.join(", ") %></td>
-        <td><%= link_to 'Show', task %> | <%= link_to 'Edit', edit_task_path(task) %> | <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            :remote => true, id: "completed_link_#{task.id}", class: completed_link_text(task) %>  </td>
+        <td data-order="<%= task.deadline.to_i %>"><%= task.deadline ? task.deadline.strftime('%B %d, %Y %H:%M') : "No deadline" %></td>
+        <td><%= !task.tags.empty? ? task.tags.join(", ") : "No tag" %></td>
+        <td><%= link_to 'Edit', edit_task_path(task) %> | <%= link_to 'Delete', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

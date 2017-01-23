@@ -1,4 +1,6 @@
 $("#completed_link_<%= @task.id %>").text("<%= completed_link_text(@task) %>");
+$("#completed_link_<%= @task.id %>").attr('class', '<%= completed_link_text(@task) %>');
+
 <% if (count_today = Task.where(deadline: Date.today.beginning_of_day..Date.today.end_of_day, completed: false).count).zero? %>
 $("#title-display").text("Today is <%= Date::DAYNAMES[Date.today.wday] %>. You've finished all the tasks!");
 <% else %>

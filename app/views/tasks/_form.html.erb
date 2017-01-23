@@ -4,10 +4,9 @@
   <% if params[:action] == 'edit' %>
     <%= f.input :completed %>
   <% end %>
-  <%= f.input :tags, as: :array %>
-  <button class="add-tag-button btn btn-default" style="margin-bottom: 25px;">Add more tags</button>
-  <br>
-  <%= f.button :submit %>
+  <%= f.input :tags, as: :array, input_html: { class: 'form-control', placeholder: 'More tags...' } %>
+<!--   <button class="add-tag-button btn btn-default" style="margin-bottom: 25px;">Add more tags</button> -->
+  <%= f.button :submit, class: 'btn btn-danger' %>
 
 <% end %>
 
@@ -20,5 +19,16 @@
   li.picker-switch > table > tbody > tr > td > a[data-action="clear"] > span:after {
     content: '  Disable deadline';
     font-family: 'Roboto';
+  }
+
+  .task_tags label {
+    display: block;
+  }
+
+  .task_tags input {
+    margin-right: 10px;
+    margin-bottom: 5px;
+    width: 120px;
+    display: inline;
   }
 </style>
