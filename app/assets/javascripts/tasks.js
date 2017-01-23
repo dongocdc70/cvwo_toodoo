@@ -2,13 +2,24 @@
 // # All this logic will automatically be available in application.js.
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
+  $.fn.dataTable.ext.order['dom-completed'] = function  ( settings, col )
+  {
+      return this.api().column( col, {order:'index'} ).nodes().map( function ( td, i ) {
+          return $(td).attr('data-order');
+      } );
+  };
+
   $.extend( true, $.fn.dataTable.defaults, {
     "aaSorting": [],
-    "order": [],
-    "aoColumnDefs": [
+    "order": [[1, 'asc'], [2, 'asc']],
+    "columnDefs": [
       {
-      'bSortable': false,
-      'aTargets': ['action']
+      'orderable': false,
+      'targets': 4
+       },
+       {
+       "orderDataType": "dom-completed",
+       "targets": 1
        },
     ],
     "language": {
@@ -21,7 +32,7 @@
   } );
 
   $(document).ready(function() {
-    $('table').DataTable({
+    var tables = $('table').DataTable({
 
     });
 

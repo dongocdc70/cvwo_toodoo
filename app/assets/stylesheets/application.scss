@@ -34,19 +34,21 @@ body {
 	background-size: cover;         /* Generic*/
 }
 
-
+.On-going, .Completed, .Overdue {
+    @extend .label;
+    font-size: 100%;
+}
 .On-going {
-	@extend .label;
 	@extend .label-danger;
-	font-size: 100%;
 }
 
 .Completed {
-	@extend .label;
 	@extend .label-success;
-	font-size: 100%;
 }
 
+.Overdue {
+    @extend .label-default;
+}
 
 
 #main {

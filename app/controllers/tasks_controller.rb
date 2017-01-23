@@ -24,9 +24,11 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     @tasks_today = Task.where(deadline: Date.today.beginning_of_day..Date.today.end_of_day).order(:deadline)
-    @tasks_today_ongoing = @tasks_today.where(completed: false).count
-    @tasks_other = Task.where.not(deadline: Date.today.beginning_of_day..Date.today.end_of_day).or(Task.where(deadline: nil)).order(:deadline)
-    @tasks_other_ongoing = @tasks_other.where(completed: false).count
+    @tasks_today_ongoing = @tasks_today.where(completed: false).where('deadline > ?', Time.now).count
+
+    @tasks_other_0 = Task.where.not(deadline: Date.today.beginning_of_day..Date.today.end_of_day)
+    @tasks_other = @tasks_other_0.or(Task.where(deadline: nil))
+    @tasks_other_ongoing = @tasks_other_0.where("deadline > ?", DateTime.now).or(Task.where(deadline: nil)).where(completed: false).count
 
     @all_tags = Task.pluck(:tags).flatten.uniq
 
