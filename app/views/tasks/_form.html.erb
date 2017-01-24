@@ -1,9 +1,6 @@
 <%= simple_form_for @task do |f| %>
   <%= f.input :title %>
   <%= f.input :deadline, as: :datetime_picker %>
-  <% if params[:action] == 'edit' %>
-    <%= f.input :completed %>
-  <% end %>
   <%= f.input :tags, as: :array, input_html: { class: 'form-control', placeholder: 'More tags...' } %>
   <%= select_tag "previous-tags", options_for_select(@all_tags, ''), {prompt: 'Quick add a tag', class: 'form-control', style: 'width: auto; margin-bottom: 20px;'} %>
   <%= f.input :notes %>

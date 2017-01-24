@@ -112,7 +112,7 @@
 		  <div id="collapse-find-by-tags" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-find-by-tags">
 		    <div class="panel-body">
 		      <%= select_tag "tags", options_for_select(@all_tags, ''),
-		      											{prompt: 'Select a tag'} %>
+		      											{prompt: 'Select a tag', class: 'form-control', style: 'width: auto; margin-bottom: 20px;'} %>
 					<div id="filter-by-tag-table"></div>
 		    </div>
 		  </div>
