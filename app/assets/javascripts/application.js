@@ -19,5 +19,4 @@
 //= require bootstrap-datetimepicker.min
 //= require pickers
 //= require jquery.bootstrap-growl.min
-//= require tinymce/tinymce.min
 //= require_tree .
