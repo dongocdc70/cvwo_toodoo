@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 20170108084606) do
     t.boolean  "completed",  default: false
     t.datetime "deadline"
     t.string   "tags",                                         array: true
-    t.text     "notes"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
   end
