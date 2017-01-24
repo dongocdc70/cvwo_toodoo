@@ -25,7 +25,8 @@
         </td>
         <td data-order="<%= task.deadline ? task.deadline.to_i : Float::INFINITY%>"><%= pretty_print_deadline(task) %></td>
         <td><%= !task.tags.empty? ? task.tags.join(", ") : "No tag" %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %> | <%= link_to 'Delete', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <td><a href="#" data-toggle="modal" data-target="#modal-edit-task" data-task-id="<%= task.id %>" class="edit-task">Edit</a> | <%= link_to 'Delete', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <td></td>
 
       </tr>

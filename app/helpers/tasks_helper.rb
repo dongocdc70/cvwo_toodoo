@@ -20,8 +20,9 @@ module TasksHelper
   end
 
   def pretty_print_deadline(model)
-    diff = distance_of_time_in_words_to_now(model.deadline)
+
     if model.deadline
+      diff = distance_of_time_in_words_to_now(model.deadline)
       if model.deadline - DateTime.now < 0
         diff + ' ago'
       else

@@ -33,6 +33,21 @@
 	</div>
 </div>
 
+<div class="modal fade" id="modal-edit-task">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Edit Task</h4>
+			</div>
+			<div class="modal-body">
+
+			</div>
+
+		</div>
+	</div>
+</div>
+
 <div class="container vertical-center" id="main">
 	<h1 class="display-4" id="title-display" style="color: #f9f9f9; margin-bottom: 20px">
 
@@ -42,7 +57,7 @@
 				<%= @tasks_today_ongoing.zero? ? "You've finished all the tasks!": "You've got " + pluralize(@tasks_today_ongoing, 'task') + " left today!"  %>
 			</span>
 		<br>
-		<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#modal-new-task" style="margin-top: 10px;"><i class="glyphicon glyphicon-plus" style="padding-right: 5px;"></i>New Task</button>
+		<button type="button" class="btn btn-success btn-lg add-task" data-toggle="modal" data-target="#modal-new-task" style="margin-top: 10px;"><i class="glyphicon glyphicon-plus" style="padding-right: 5px;"></i>New Task</button>
 
 	</h1>
 	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">

@@ -21,13 +21,15 @@
 
   <p>
     <strong>Tags:</strong>
-    <%= @task.tags.join(", ") %>
+    <%= !@task.tags.empty? ? @task.tags.join(", ") : 'No tag' %>
   </p>
 
   <p>
     <strong>Notes:</strong>
     <br>
-    <%= @task.notes.html_safe %>
+    <div style="width: 100%; border: 1px solid #333; padding: 20px;">
+      <%= @task.notes ? @task.notes.html_safe : 'No note' %>
+    </div>
   </p>
 
 </div>

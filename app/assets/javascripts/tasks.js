@@ -59,6 +59,24 @@
 
     });
 
+    var initTinyMCE = function() {
+      tinymce.remove("textarea");
+      tinymce.init({
+        selector: 'textarea',
+        height: 200,
+        theme: 'modern',
+        plugins: [
+          'advlist autolink lists charmap print preview hr anchor pagebreak',
+          'searchreplace wordcount visualblocks visualchars code fullscreen',
+          'insertdatetime nonbreaking save table contextmenu directionality',
+          'emoticons template paste textcolor colorpicker textpattern imagetools codesample toc'
+        ],
+        toolbar1: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent',
+        toolbar2: 'print preview | forecolor backcolor emoticons | codesample',
+        image_advtab: true,
+       });
+    };
+
     $('input.datetime_picker').datetimepicker({
       format: 'DD/MM/YYYY HH:mm',
       collapse: false,
@@ -160,6 +178,20 @@
         $(this).modal('show');
       });
 
+    });
+
+    $('a.edit-task').click(function(event) {
+      var id = $(this).data('task-id');
+      $('#modal-edit-task').find('.modal-body').load('/tasks/'+id+'/edit .show-page',
+        function(){
+        initTinyMCE();
+        $(this).modal('show');
+      });
+
+    });
+
+    $('button.add-task').click(function(event) {
+      initTinyMCE();
     });
 
 
