@@ -50,6 +50,10 @@ body {
     @extend .label-default;
 }
 
+input[type="search"] {
+    width: 300px !important;
+}
+
 
 #main {
     background-color: rgba(249, 249, 249, 0.3);

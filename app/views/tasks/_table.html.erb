@@ -2,17 +2,18 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Completed/On-going/Overdue</th>
+      <th>Completed?</th>
       <th>Deadline</th>
       <th>Tags</th>
       <th>Actions</th>
+      <th>Notes</th>
     </tr>
   </thead>
 
   <tbody>
     <% tasks.each do |task| %>
       <tr id="task_<%= task.id %>">
-        <td><%= link_to task.title, task %> </td>
+        <td><a class="show-task" data-toggle="modal" href='#modal-show-task' data-task-id="<%= task.id %>" data-task-title="<%= task.title %>"><%= task.title %></a></td>
         <td data-order="<%= completed_link_data_order(task) %>" data-search="<%= completed_link_text(task) %>">
           <% if completed_link_text(task) == 'Completed' or completed_link_text(task) == 'On-going' %>
             <%= link_to completed_link_text(task),
@@ -22,9 +23,11 @@
             <div class="Overdue">Overdue</div>
           <% end %>
         </td>
-        <td data-order="<%= task.deadline ? task.deadline.to_i : Float::INFINITY%>"><%= task.deadline ? task.deadline.strftime('%B %d, %Y %H:%M') : "No deadline" %></td>
+        <td data-order="<%= task.deadline ? task.deadline.to_i : Float::INFINITY%>"><%= pretty_print_deadline(task) %></td>
         <td><%= !task.tags.empty? ? task.tags.join(", ") : "No tag" %></td>
         <td><%= link_to 'Edit', edit_task_path(task) %> | <%= link_to 'Delete', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= task.notes %></td>
+
       </tr>
     <% end %>
   </tbody>

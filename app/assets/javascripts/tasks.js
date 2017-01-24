@@ -11,6 +11,7 @@
 
   $.extend( true, $.fn.dataTable.defaults, {
     "aaSorting": [],
+    "autoWidth": false,
     "order": [[1, 'asc'], [2, 'asc']],
     "columnDefs": [
       {
@@ -21,6 +22,27 @@
        "orderDataType": "dom-completed",
        "targets": 1
        },
+       {
+        "width": "30%",
+        "targets": 0
+       },
+       {
+        "width": "15%",
+        "targets": 1
+       },
+       {
+        "width": "20%",
+        "targets": 2
+       },
+       {
+        "width": "20%",
+        "targets": 3
+       },
+       {
+        "visible": false,
+        "targets": 5
+       }
+
     ],
     "language": {
       "lengthMenu":     "Show _MENU_ tasks",
@@ -28,7 +50,8 @@
       "infoEmpty":      "",
       "emptyTable":     "No task yet! Enjoy your free time!",
 
-    }
+    },
+
   } );
 
   $(document).ready(function() {
@@ -129,5 +152,15 @@
         }
       }
     });
+
+    $('a.show-task').click(function(event) {
+      var id = $(this).data('task-id');
+      $('#modal-show-task').find('.modal-body').load('/tasks/'+id+' .show-page',
+        function(){
+        $(this).modal('show');
+      });
+
+    });
+
 
   });

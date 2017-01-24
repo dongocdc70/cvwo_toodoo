@@ -5,9 +5,9 @@ $("#completed_link_<%= @task.id %>").parent().attr('data-order', '<%= completed_
 
 
 <% if (count_today = Task.where(deadline: Date.today.beginning_of_day..Date.today.end_of_day, completed: false).where('deadline > ?', Time.now).count).zero? %>
-$("#title-display").text("Today is <%= Date::DAYNAMES[Date.today.wday] %>. You've finished all the tasks!");
+$("#title-display>span").text("Today is <%= Date::DAYNAMES[Date.today.wday] %>. You've finished all the tasks!");
 <% else %>
-$("#title-display").text("Today is <%= Date::DAYNAMES[Date.today.wday] %>. You've got <%= pluralize(count_today, 'task') %> left today!");
+$("#title-display>span").text("Today is <%= Date::DAYNAMES[Date.today.wday] %>. You've got <%= pluralize(count_today, 'task') %> left today!");
 <% end %>
 
 $('#badge-noti-today').text('<%= count_today %>');

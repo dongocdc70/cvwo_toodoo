@@ -1,24 +1,33 @@
-<p id="notice"><%= notice %></p>
+<div class="show-page">
+  <div id="notifications" style="display: none;">
+  	<p id="notice"><%= notice %></p>
+  	<p id="alert"><%= alert %></p>
+  </div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @task.title %>
-</p>
+  <p>
+    <strong>Title:</strong>
+    <%= @task.title %>
+  </p>
 
-<p>
-  <strong>Completed:</strong>
-  <%= @task.completed %>
-</p>
+  <p>
+    <strong>Completed/On-going/Overdue:</strong>
+    <%= completed_link_text(@task) %>
+  </p>
 
-<p>
-  <strong>Deadline:</strong>
-  <%= @task.deadline ? @task.deadline.strftime('%B %d, %Y %H:%M') : "No deadline" %>
-</p>
+  <p>
+    <strong>Deadline:</strong>
+    <%= @task.deadline ? @task.deadline.strftime('%B %d, %Y %H:%M') : "No deadline" %>
+  </p>
 
-<p>
-  <strong>Tags:</strong>
-  <%= @task.tags.join(", ") %>
-</p>
+  <p>
+    <strong>Tags:</strong>
+    <%= @task.tags.join(", ") %>
+  </p>
 
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+  <p>
+    <strong>Notes:</strong>
+    <br>
+    <%= @task.notes.html_safe %>
+  </p>
+
+</div>
