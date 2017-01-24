@@ -1,10 +1,11 @@
 class Task < ApplicationRecord
 
-	before_save :remove_blank_tasks
+	before_save :remove_blank_and_duplicate_tags
 
 	validates :title, presence: true
 
-	def remove_blank_tasks
+	def remove_blank_and_duplicate_tags
+		tags.uniq!
 		tags.reject!(&:blank?)
 	end
 	# def set_deadline_to_now

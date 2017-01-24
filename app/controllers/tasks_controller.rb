@@ -49,6 +49,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
+    @all_tags = Task.pluck(:tags).flatten.uniq
   end
 
   # POST /tasks

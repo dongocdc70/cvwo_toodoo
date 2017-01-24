@@ -5,7 +5,9 @@
     <%= f.input :completed %>
   <% end %>
   <%= f.input :tags, as: :array, input_html: { class: 'form-control', placeholder: 'More tags...' } %>
+  <%= select_tag "previous-tags", options_for_select(@all_tags, ''), {prompt: 'Quick add a tag', class: 'form-control', style: 'width: auto; margin-bottom: 20px;'} %>
   <%= f.input :notes %>
+
 <!--   <button class="add-tag-button btn btn-default" style="margin-bottom: 25px;">Add more tags</button> -->
   <%= f.button :submit, class: 'btn btn-danger' %>
 

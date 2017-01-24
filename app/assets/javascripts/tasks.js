@@ -63,7 +63,7 @@
       tinymce.remove("textarea");
       tinymce.init({
         selector: 'textarea',
-        height: 200,
+        height: 100,
         theme: 'modern',
         plugins: [
           'advlist autolink lists charmap print preview hr anchor pagebreak',
@@ -155,6 +155,8 @@
       });
     });
 
+    $('.task_tags input').val('');
+
     $('.task_tags').on('input', 'input', function() {
       $(this).siblings('input').each(function(index, el) {
         if(!$(this).val()) {
@@ -170,6 +172,8 @@
         }
       }
     });
+
+
 
     $('a.show-task').click(function(event) {
       var id = $(this).data('task-id');
@@ -192,6 +196,30 @@
 
     $('button.add-task').click(function(event) {
       initTinyMCE();
+    });
+
+    $('select#previous-tags').val('');
+
+    $('select#previous-tags').change(function(event) {
+      if($(this).val()) {
+
+        var $lastTagField = $('input[name="task[tags][]"]:last-of-type');
+        $lastTagField = $lastTagField.clone();
+        $lastTagField.val($(this).val());
+        $(".task_tags").append($lastTagField);
+
+        $('.task_tags input').each(function(index, el) {
+          if(!$(this).val()) {
+            $(this).remove();
+          }
+        });
+
+        $lastTagField = $lastTagField.clone();
+        $lastTagField.val('');
+        $(".task_tags").append($lastTagField);
+
+        $(this).val('');
+      }
     });
 
 
