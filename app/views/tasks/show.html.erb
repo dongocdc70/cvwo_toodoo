@@ -28,7 +28,7 @@
     <strong>Notes:</strong>
     <br>
     <div style="width: 100%; border: 1px solid #333; padding: 20px;">
-      <%= @task.notes ? @task.notes.html_safe : 'No note' %>
+      <%= !@task.notes.blank? ? @task.notes.html_safe : 'No note' %>
     </div>
   </p>
 
