@@ -14,7 +14,6 @@
 			- I can toggle whether the task has been completed
 			- I can add tags to the task
 			- I can search and sort task by various criteria (deadline, title, tags, completed/on-going)
+                        - I can add multimedia notes to the task
 		* To be implemented:
-		  - I can add multimedia notes to the task
-		  - I can add sub-tasks to the task
-
+		        - I can add sub-tasks to the task
